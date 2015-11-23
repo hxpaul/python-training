@@ -5,24 +5,43 @@ output factorial of a number
 '''
 
 from __future__ import print_function
+from functools import reduce
+from operator import mul
 
 __copyright__ = 'Copyright 2015 Holiday Extras'
 __licence__ = 'GPL'
 
+def _validate( n ):
+  if not isinstance( n, int ):
+    raise TypeError( 'can only do factorial of an integer' )
+  if ( n < 0 ):
+    raise ValueError( 'cannot do factorial of a negative number' )
+
 def recursive( n ):
   '''recursively work out factorial, soon run out of space this way'''
-  n = int( float( n ))
-  if ( n < 0 ):
-    raise ValueError( 'argument must be non negative' )
-  if n > 1:
-    return n * recursive( n - 1 )
-  return 1
+  _validate( n )
+  if n < 2:
+    return 1
+  return n * recursive( n - 1 )
+
+def tailRecursive( n ) :
+  '''tail recursive, still not good in python though'''
+  _validate( n );
+  if n < 2:
+    return 1
+  def iterate( i, result = 1 ):
+    return result if i < 2 else iterate( i - 1, result * i )
+  return iterate( n )
+
+def usingReduce( n ):
+  _validate( n )
+  if n < 2:
+    return 1
+  return reduce( mul, range( 2, n + 1 ))
 
 def iterative( n ):
   '''iteratively work out factorial, can work with bigger numbers'''
-  n = int( float( n ))
-  if ( n < 0 ):
-    raise ValueError( 'argument must be non negative' )
+  _validate( n )
   i = 1
   result = 1
   while i <= n:
@@ -41,5 +60,6 @@ if __name__ == '__main__':
     print( 'usage:', sys.argv[0], '[a number]' )
     exit( )
 
-  print( recursive( sys.argv[1] ))
-  print( iterative( sys.argv[1] ))
+  print( recursive( int( sys.argv[1] )))
+  print( iterative( int( sys.argv[1] )))
+  print( usingReduce( int( sys.argv[1] )))

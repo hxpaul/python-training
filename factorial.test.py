@@ -21,6 +21,9 @@ class TestFactorial( unittest.TestCase ):
   def test_iterative_negative_number( self ):
     self.assertRaises( ValueError, iterative, -66 );
 
+  def test_iterative_non_number( self ):
+    self.assertRaises( TypeError, iterative, 'foo' );
+
   def test_iterative_number_we_know( self ):
     self.assertEqual( 5040, iterative( 7 ));
 

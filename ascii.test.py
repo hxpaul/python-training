@@ -10,7 +10,6 @@ __licence__ = 'GPL'
 import unittest
 from ascii import Square
 from ascii import Rectangle
-# instead of doing "import factorial"
 
 class TestFactorial( unittest.TestCase ):
   def test_3_x_2_rectangle( self ):

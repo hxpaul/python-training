@@ -18,5 +18,5 @@ if len( sys.argv ) != 2:
   print( 'usage:', sys.argv[0], '[a number]' )
   exit( )
 
-print( factorial.recursive( sys.argv[1] ))
-print( factorial.iterative( sys.argv[1] ))
+print( factorial.recursive( int( sys.argv[1] )))
+print( factorial.iterative( int( sys.argv[1] )))

@@ -23,7 +23,7 @@ class TestFactorial( unittest.TestCase ):
     self.assertEqual( rectangle, str( Rectangle( 3, 2 )))
 
   def test_3_x_3_square( self ):
-    rectangle = '***\n***\n***\n'
+    rectangle = '***\n* *\n***\n'
     self.assertEqual( rectangle, Square( 3 ).draw( ))
     self.assertEqual( rectangle, str( Square( 3 )))
 

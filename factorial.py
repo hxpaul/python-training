@@ -12,6 +12,8 @@ __licence__ = 'GPL'
 def recursive( n ):
   '''recursively work out factorial, soon run out of space this way'''
   n = int( float( n ))
+  if ( n < 0 ):
+    raise ValueError( 'argument must be non negative' )
   if n > 1:
     return n * recursive( n - 1 )
   return 1
@@ -19,6 +21,8 @@ def recursive( n ):
 def iterative( n ):
   '''iteratively work out factorial, can work with bigger numbers'''
   n = int( float( n ))
+  if ( n < 0 ):
+    raise ValueError( 'argument must be non negative' )
   i = 1
   result = 1
   while i <= n:
